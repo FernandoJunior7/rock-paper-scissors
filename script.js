@@ -1,13 +1,10 @@
 const elements = ["pedra", "papel", "tesoura"];
-
 let humanScore = 0;
 let computerScore = 0;
 
 function getComputerChoice() {
     return Math.floor(Math.random() * 3);
 }
-
-let computerChoice = elements[getComputerChoice()];
 
 function getHumanChoice() {
     let isChoiceValid;
@@ -25,8 +22,6 @@ function getHumanChoice() {
 
     return choice;
 }
-
-let humanChoice = getHumanChoice();
 
 function playRound(humanChoice, computerChoice) {
 
@@ -75,4 +70,24 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-playRound(humanChoice, computerChoice);
+function playGame() {
+    let humanChoice, computerChoice;
+
+    for (i = 0; i < 5; i ++) {
+        humanChoice = getHumanChoice();
+        computerChoice = elements[getComputerChoice()];
+        playRound(humanChoice, computerChoice);
+    }
+
+    if (computerScore > humanScore) {
+        console.log(`O computador te deu um pau! ${computerScore} x ${humanScore} fora o baile`)
+    }
+    if (humanScore > computerScore) {
+        console.log(`Você deu um pau no computador! ${humanScore} x ${computerScore} fora o baile`)
+    }
+    if (humanScore === computerScore) {
+        console.log(`Vocês empataram em ${humanScore} x ${computerScore}`);
+    }
+}
+
+playGame();
