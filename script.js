@@ -2,7 +2,7 @@ const elements = ["pedra", "papel", "tesoura"];
 let humanScore = 0;
 let computerScore = 0;
 
-function getComputerChoice() {
+function getRandomNumberBetweenZeroAndTwo() {
     return Math.floor(Math.random() * 3);
 }
 
@@ -75,7 +75,7 @@ function playGame() {
 
     for (i = 0; i < 5; i ++) {
         humanChoice = getHumanChoice();
-        computerChoice = elements[getComputerChoice()];
+        computerChoice = elements[getRandomNumberBetweenZeroAndTwo()];
         playRound(humanChoice, computerChoice);
     }
 
