@@ -1,5 +1,8 @@
 const elements = ["pedra", "papel", "tesoura"];
 
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     return Math.floor(Math.random() * 3);
 }
@@ -12,11 +15,16 @@ function getHumanChoice() {
 
     do {
         isChoiceValid = true;
-        choice = prompt('O - Pedra, 1 - Papel, 2 - Tesoura');
+        choice = prompt('Pedra, Papel ou Tesoura?').toLowerCase();
 
-        if (choice < 0 || choice > 2) {
+        console.log(choice === 'pedra');
+
+        if (choice !== 'pedra' && choice !== 'papel' && choice !== 'tesoura') {
             isChoiceValid = false;
         }
+
+        console.log(`Choice: ${choice}`);
+        console.log(`isChoiceValid: ${isChoiceValid}`);
 
     } while (!isChoiceValid)
 
