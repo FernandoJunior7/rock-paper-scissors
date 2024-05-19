@@ -1,26 +1,10 @@
 const elements = ["pedra", "papel", "tesoura"];
+const buttonsContainer = document.querySelector('#player-buttons');
 let humanScore = 0;
 let computerScore = 0;
 
 function getRandomNumberBetweenZeroAndTwo() {
     return Math.floor(Math.random() * 3);
-}
-
-function getHumanChoice() {
-    let isChoiceValid;
-    let choice;
-
-    do {
-        isChoiceValid = true;
-        choice = prompt('Pedra, Papel ou Tesoura?').toLowerCase();
-
-        if (choice !== 'pedra' && choice !== 'papel' && choice !== 'tesoura') {
-            isChoiceValid = false;
-        }
-
-    } while (!isChoiceValid)
-
-    return choice;
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -75,7 +59,6 @@ function playGame() {
 
     for (i = 0; i < 5; i ++) {
         humanChoice = getHumanChoice();
-        computerChoice = elements[getRandomNumberBetweenZeroAndTwo()];
         playRound(humanChoice, computerChoice);
     }
 
@@ -89,5 +72,11 @@ function playGame() {
         console.log(`Vocês empataram em ${humanScore} x ${computerScore}`);
     }
 }
+
+buttonsContainer.addEventListener('click', event => {
+    const humanChoice = event.target.id;
+    const computerChoice = elements[getRandomNumberBetweenZeroAndTwo()];
+    playRound(humanChoice, computerChoice);
+});
 
 // playGame();
