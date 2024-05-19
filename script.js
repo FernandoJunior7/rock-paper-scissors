@@ -1,5 +1,10 @@
 const elements = ["pedra", "papel", "tesoura"];
+
 const buttonsContainer = document.querySelector('#player-buttons');
+const humanScoreDisplay = document.querySelector('#human-score');
+const computerScoreDisplay = document.querySelector('#computer-score');
+const resultMessageDisplay = document.querySelector('#result-message');
+
 let humanScore = 0;
 let computerScore = 0;
 
@@ -7,51 +12,65 @@ function getRandomNumberBetweenZeroAndTwo() {
     return Math.floor(Math.random() * 3);
 }
 
+function updateScorings(humanScore, computerScore) {
+    humanScoreDisplay.textContent = Number(humanScore);
+    computerScoreDisplay.textContent = Number(computerScore);
+}
+
+function updateResultMessage(message) {
+    resultMessageDisplay.textContent = message;
+}
+
 function playRound(humanChoice, computerChoice) {
 
+    let message;
+
     if (computerChoice === humanChoice) {
-        console.log(`Houve um empate. Ambos escolheram ${humanChoice}`);
+        message = `Houve um empate. Ambos escolheram ${humanChoice}`;
         return;
     }
     
     switch (humanChoice) {
         case 'pedra':
             if (computerChoice === 'papel') {
-                console.log(`O computador venceu essa rodada! ${computerChoice} enrola a ${humanChoice}`);
+                message = `O computador venceu essa rodada! ${computerChoice} enrola a ${humanChoice}`;
                 computerScore++;
             }
             if (computerChoice === 'tesoura') {
-                console.log(`Você venceu essa rodada! ${humanChoice} amassa a ${computerChoice}`);
+                message = `Você venceu essa rodada! ${humanChoice} amassa a ${computerChoice}`;
                 humanScore++;
             }    
             break;
 
         case 'papel':
             if (computerChoice === 'tesoura') {
-                console.log(`O computador venceu essa rodada! ${computerChoice} corta o ${humanChoice}`);
+                message = `O computador venceu essa rodada! ${computerChoice} corta o ${humanChoice}`;
                 computerScore++;
             }
             if (computerChoice === 'pedra') {
-                console.log(`Você venceu essa rodada! ${humanChoice} enrola a ${humanChoice}`);
+                message = `Você venceu essa rodada! ${humanChoice} enrola a ${humanChoice}`;
                 humanScore++;
             }
             break;
 
         case 'tesoura':
             if (computerChoice == 'pedra') {
-                console.log(`O computador venceu essa rodada! ${computerChoice} amassa a ${humanChoice}`);
+                message = `O computador venceu essa rodada! ${computerChoice} amassa a ${humanChoice}`;
                 computerScore++;
             }
             if (computerChoice == 'tesoura') {
-                console.log(`Você venceu essa rodada! ${humanChoice} corta o ${computerChoice}`);
+                message = `Você venceu essa rodada! ${humanChoice} corta o ${computerChoice}`;
                 humanScore++;
             }
             break;
     
         default:
-            console.log('Erro inesperado, não era pra cair aqui');
+            message = 'Erro inesperado, não era pra cair aqui';
             break;
     }
+
+    updateScorings(humanScore, computerScore);
+    updateResultMessage(message);
 }
 
 function playGame() {

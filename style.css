@@ -22,6 +22,10 @@ body {
   color: #e7e7e7;
 }
 
+.divider {
+  border: 1px solid #e7e7e7;
+}
+
 #container {
   max-width: 820px;
   display: flex;
@@ -32,6 +36,24 @@ body {
 h2 {
   margin-top: 2rem;
   text-align: center;
+}
+
+#scoring-display {
+  text-align: center;
+}
+
+#scorings {
+  display: flex;
+  gap: 2rem;
+
+  font-size: 4.8rem;
+  justify-content: center;
+
+  margin-bottom: 2rem;
+}
+
+#result-message {
+  font-size: 2rem;
 }
 
 #player-buttons {
