@@ -73,29 +73,31 @@ function playRound(humanChoice, computerChoice) {
     updateResultMessage(message);
 }
 
-function playGame() {
-    let humanChoice, computerChoice;
+function playGame(humanChoice) {
 
-    for (i = 0; i < 5; i ++) {
-        humanChoice = getHumanChoice();
+    let message;
+
+    if (computerScore < 5 || humanScore < 5) {
+        let computerChoice = elements[getRandomNumberBetweenZeroAndTwo()];
         playRound(humanChoice, computerChoice);
     }
-
-    if (computerScore > humanScore) {
-        console.log(`O computador te deu um pau! ${computerScore} x ${humanScore} fora o baile`)
+    if (computerScore == 5) {
+        message = `O computador te deu um pau! ${computerScore} x ${humanScore} fora o baile`;
+        updateResultMessage(message);
+        setTimeout(() => {
+            location.reload();
+        }, 2000);
     }
-    if (humanScore > computerScore) {
-        console.log(`Você deu um pau no computador! ${humanScore} x ${computerScore} fora o baile`)
-    }
-    if (humanScore === computerScore) {
-        console.log(`Vocês empataram em ${humanScore} x ${computerScore}`);
+    if (humanScore == 5) {
+        message = `Você deu um pau no computador! ${humanScore} x ${computerScore} fora o baile`;
+        updateResultMessage(message);
+        setTimeout(() => {
+            location.reload();
+        }, 2000);
     }
 }
 
 buttonsContainer.addEventListener('click', event => {
     const humanChoice = event.target.id;
-    const computerChoice = elements[getRandomNumberBetweenZeroAndTwo()];
-    playRound(humanChoice, computerChoice);
+    playGame(humanChoice);
 });
-
-// playGame();
