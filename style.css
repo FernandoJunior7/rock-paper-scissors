@@ -54,17 +54,17 @@ h2 {
   cursor: pointer;
 }
 
-#rock:hover {
+#pedra:hover {
   background-color: #787878;
   border: 1px solid #595959;
 }
 
-#paper:hover {
+#papel:hover {
  background-color: #e8e83f;
  border: 1px solid #939330;
 }
 
-#scissor:hover {
+#tesoura:hover {
   background-color: #f03737;
   border: 1px solid #9c2828;
 }
